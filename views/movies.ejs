@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+      
+      th {
+        background-color: #dddddd;
+      }
+      
+      button {
+        background-color: #ff0000;
+        color: #ffffff;
+        border: none;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 2px;
+        border-radius: 5px;
+      }
+      
+      button:hover {
+        background-color: #b30000;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>List of Movies</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Autor</th>
+          <th>Año</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(movie => { %>
+          <tr>
+            <td><%= movie.nombre %></td>
+            <td><%= movie.autor %></td>
+            <td><%= movie.año %></td>
+            <td>
+              <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
