@@ -1,7 +1,9 @@
+// Importando módulos necesarios para el archivo
 const { matchedData } = require("express-validator");
 const { usersModel } = require("../models")
 const handdleHttpError = require("../utils/handdleError")
 
+// Función para obtener todos los usuarios
 const getUsers = async (req, res) => {
     try {
     const data = await usersModel.find({});
@@ -12,6 +14,7 @@ const getUsers = async (req, res) => {
     }
 };
 
+// Función para obtener un usuario por su ID
 const getUser = async (req, res) => {
     try { 
         req = matchedData(req);
@@ -24,6 +27,7 @@ const getUser = async (req, res) => {
     }
 };
 
+// Función para eliminar un usuario por su ID
 const deleteUser = async (req, res) => {
     try { 
         req = matchedData(req);
@@ -36,6 +40,7 @@ const deleteUser = async (req, res) => {
     }
 };
 
+// Función para actualizar un usuario por su ID
 const updateUser = async (req, res) => {
     try {
         // obteniendo 2 objetos a travez de uno
@@ -50,6 +55,7 @@ const updateUser = async (req, res) => {
     }
 };
 
+// Función para crear un usuario
 const createUser = async (req, res) => {
     try {
         const body = matchedData(req);
